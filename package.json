@@ -22,8 +22,7 @@
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.1",
     "react-router": "^6.4.4",
-    "react-router-dom": "^6.4.4",
-    "sass-loader": "^13.2.0"
+    "react-router-dom": "^6.4.4"
   },
   "nodemonConfig": {
     "ignore": [
@@ -44,6 +43,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.20",
+    "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
