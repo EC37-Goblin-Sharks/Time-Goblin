@@ -4,7 +4,7 @@ const Signup = (props) => {
   return (
     <div className="signupPage">
       <div className="signupBox">
-        <form className="signupForm" method="POST" action="/signup">
+        <form className="signupForm" method="POST" action="/signup/request">
           <label htmlFor="username">Username: </label>
           <input className="formInfo" id="username" name="username" type="text"></input>
           <label htmlFor="password">Password: </label>
