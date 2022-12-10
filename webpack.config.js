@@ -28,11 +28,10 @@ module.exports = {
     // ========================
     // Set up proxy here
     // ========================
-    // proxy: {
-    //   '/signup/success': 'http://localhost:3000/',
-    //   '/login': 'http://localhost:3000/',
-    //   '/transactions/input': 'http://localhost:3000/',
-    // },
+    proxy: {
+      '/signup/request': 'http://localhost:3000/',
+      '/login': 'http://localhost:3000/',
+    },
   },
   module: {
     rules: [
