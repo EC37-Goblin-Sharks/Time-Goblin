@@ -1,19 +1,24 @@
 const User = require('../models/userModel');
-//==================
-//NOTE: UPDATE PATH ABOVE ONCE AVAILABLE
-//===================
 
 const userController = {};
 
 userController.createUser = (req, res, next) => {
+  console.log(`ENTERED USER CONTROLLER createUser`);
+  const { username, password, firstName, lastName } = req.body;
   User.create({
-    username: req.body.username,
-    password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    username,
+    password,
+    firstName,
+    lastName,
     points: 0,
-  });
-  return next();
+  })
+    .then((userData) => {
+      res.locals.user = userData;
+      return next();
+    })
+    .catch((err) => {
+      next({ log: err, message: 'error in userController.createUser' });
+    });
 };
 
 //===================
@@ -21,11 +26,22 @@ userController.createUser = (req, res, next) => {
 //====================
 
 userController.getUser = (req, res, next) => {
-  User.findOne({ username: req.body.username });
+  console.log(`ENTERED USER CONTROLLER getUser`);
+  const { userName } = req.params;
+  User.findOne({ username: userName })
+    .then((data) => {
+      res.locals.user = data;
+    })
+    .catch((err) => {
+      next({ log: err, message: 'error in userController.getUser' });
+    })
+    .then(() => {
+      return next();
+    });
 };
 
 userController.updateUser = (req, res, next) => {
-  User.findOne({ username: req.body.username });
+  User.findOne({ username: req.body.user });
 };
 
 //====================
