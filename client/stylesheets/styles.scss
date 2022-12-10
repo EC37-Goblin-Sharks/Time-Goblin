@@ -1,0 +1,54 @@
+
+
+/* universal reset of margins and padding */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif; // no impact 
+}
+
+/* absolute header and footer for all pages */
+
+header {
+    background-color: #77BFA3;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: #FFF8F0;
+    z-index: 1;
+  }
+
+  header svg {
+    padding-right: 10px;
+    // width: 32;
+    // height: 32; 
+    // fill: currentColor;
+  }
+
+  /* used to remove underline on redirect link back to home*/
+  header a {
+    text-decoration: none;
+    // color: #FFF8F0;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0px;
+    font-size: 12px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: #DDE7C7;
+    color: #635D5C;
+  }
