@@ -1,16 +1,4 @@
 const mongoose = require('mongoose');
-const { schema } = require ('webpack-dev-server');
-
-const MONGO_URI = 'mongodb+srv://codesmith:ecri37@time-goblin.rrflcmy.mongodb.net/?retryWrites=true&w=majority'
-
-mongoose.connect(Mongo_URI, {
-    userNewURLParse: true,
-    userUnifiedTopology: true,
-    dbName: 'time-goblin'
-})
-    .then(() => console.log('Connected to Mongo DB.'))
-    .catch(err => console.log(err));
-
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
