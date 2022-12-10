@@ -7,7 +7,7 @@ const Login = (props) => {
         <form className="loginForm" method="POST" action="/login">
           <input className="formInfo" id="username" name="username" type="text" placeholder="Username"></input>
           <input className="formInfo" id="password" name="password" type="password" placeholder="Password"></input>
-          <input className="loginButton" type="submit" value="Login"></input>
+          <input className="loginBtn" type="submit" value="Login"></input>
         </form>
         <a href="signup">Sign Up</a>
       </div>

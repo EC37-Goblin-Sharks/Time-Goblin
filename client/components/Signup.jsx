@@ -13,7 +13,7 @@ const Signup = (props) => {
           <input className="formInfo" id="firstName" name="firstName" type="text"></input>
           <label htmlFor="lastName">Last Name: </label>
           <input className="formInfo" id="lastName" name="lastName" type="text"></input>
-          <input className="signupButton" type="submit" value="Sign Up"></input>
+          <input className="signupBtn" type="submit" value="Sign Up"></input>
         </form>
       </div>
     </div>
