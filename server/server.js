@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -7,12 +8,23 @@ const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
+const MONGO_URI = 'mongodb+srv://codesmith:ecri37@time-goblin.rrflcmy.mongodb.net/?retryWrites=true&w=majority'
+
+mongoose.connect(MONGO_URI, {
+    // userNewURLParse: true,
+    // userUnifiedTopology: true,
+    dbName: 'time-goblin'
+})
+    .then(() => console.log('Connected to Mongo DB.'))
+    .catch(err => console.log(err));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../client')));
 
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 
 app.use((req, res) =>
   res.status(404).send('The requested page could not be found.')
