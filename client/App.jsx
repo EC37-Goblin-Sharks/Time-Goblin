@@ -11,6 +11,7 @@ const App = (props) => {
       <div className="routerMain" id='content'>
         <Routes>
           {/* different path inside each rout, component inside- loggin, sign up, home */}
+          <Route path='/' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
         </Routes>
       </div>
