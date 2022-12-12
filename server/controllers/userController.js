@@ -18,7 +18,10 @@ userController.createUser = (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      next({ log: err, message: { err: 'error in userController.createUser' } });
+      next({
+        log: err,
+        message: { err: 'error in userController.createUser' },
+      });
     });
 };
 
@@ -31,7 +34,10 @@ userController.getUser = (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      return next({ log: err, message: { err: 'error in userController.getUser' } });
+      return next({
+        log: err,
+        message: { err: 'error in userController.getUser' },
+      });
     });
 };
 
@@ -46,36 +52,54 @@ userController.verifyUser = (req, res, next) => {
         return res.redirect('/signup');
       }
       // check password
-      bcrypt.compare(password, doc.password)
+      bcrypt
+        .compare(password, doc.password)
         .then((result) => {
           if (!result) {
             return res.redirect('/');
-          }
-          else {
+          } else {
             res.locals.user = doc;
             return next();
           }
         })
         .catch((err) => {
-          next({ log: err, message: { err: 'error in comparing hash of userController.verifyUser' } });
+          next({
+            log: err,
+            message: {
+              err: 'error in comparing hash of userController.verifyUser',
+            },
+          });
         });
     })
     .catch((err) => {
-      next({ log: err, message: { err: 'error in userController.verifyUser' } });
+      next({
+        log: err,
+        message: { err: 'error in userController.verifyUser' },
+      });
     });
 };
 
 userController.updateUser = (req, res, next) => {
-  User.findOne({ username: req.body.user })
-    .then()
-    .catch((err) => {
-      next({ log: err, message: { err: 'error in comparing hash of userController.updateUser' } });
+  const { userID } = req.cookies.ssid;
+  const { points } = req.body.points;
+  console.log(`POINTS from UpdateUser:  `, points);
+  User.updateOne(
+    { _id: userID },
+    { $set: { points: points } },
+    { upsert: false }
+  ).catch((err) => {
+    next({
+      log: err,
+      message: {
+        err: 'error in comparing hash of userController.updateUser',
+      },
     });
+  });
 };
 
 //====================
 // FOR STRETCH GOALS LATER
 //====================
-userController.deleteUser = (req, res, next) => { };
+userController.deleteUser = (req, res, next) => {};
 
 module.exports = userController;
