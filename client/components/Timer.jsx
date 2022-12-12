@@ -28,16 +28,13 @@ const Timer = (props) => {
         setMinute(computedMinute);
 
         setCounter((counter) => counter - 1);
-        // if (counter % 15 === 0) {
-        //   console.log('points should change');
-        //   props.setPoints((oldPoints) => oldPoints + 1);
-        // }
+        if (counter % 15 === 0) {
+          props.setPoints((oldPoints) => oldPoints + 15);
+        }
         if (counter === 0) {
           // update state to reflect total points
           console.log('points should change');
-          props.setPoints((oldPoints) => oldPoints + 1);
-          // post request to update score
-          props.addPointsDb();
+          props.setPoints((oldPoints) => oldPoints + 1500);
           setIsActive(!isActive);
           setMinute('25');
           setSecond('00');

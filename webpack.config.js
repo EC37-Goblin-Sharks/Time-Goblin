@@ -24,13 +24,14 @@ module.exports = {
     },
 
     // headers: { 'Access-Control-Allow-Origin': '*' },
-    
+
     // ========================
     // Set up proxy here
     // ========================
     proxy: {
       '/signup/request': 'http://localhost:3000/',
       '/login': 'http://localhost:3000/',
+      '/points': 'http://localhost:3000/',
     },
   },
   module: {

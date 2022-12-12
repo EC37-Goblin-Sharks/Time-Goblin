@@ -80,26 +80,24 @@ userController.verifyUser = (req, res, next) => {
 };
 
 userController.updateUser = (req, res, next) => {
-  const { userID } = req.cookies.ssid;
-  const { points } = req.body.points;
+  const userID = req.cookies.ssid;
+  const { points } = req.body;
   console.log(`POINTS from UpdateUser:  `, points);
-  User.updateOne(
-    { _id: userID },
-    { $set: { points: points } },
-    { upsert: false }
-  ).catch((err) => {
-    next({
-      log: err,
-      message: {
-        err: 'error in comparing hash of userController.updateUser',
-      },
+  User.updateOne({ _id: userID }, { points })
+    .then(() => next())
+    .catch((err) => {
+      next({
+        log: err,
+        message: {
+          err: 'error in comparing hash of userController.updateUser',
+        },
+      });
     });
-  });
 };
 
 //====================
 // FOR STRETCH GOALS LATER
 //====================
-userController.deleteUser = (req, res, next) => {};
+userController.deleteUser = (req, res, next) => { };
 
 module.exports = userController;

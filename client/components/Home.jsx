@@ -15,35 +15,6 @@ const Home = (props) => {
   // Functions
   // ==========================
 
-  const addPointsDb = () => {
-    // setPoints(); // increment points here
-    axios
-      .put(
-        '/points',
-        {
-          points: points,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  // const getUserInfo = () => {
-  //   axios
-  //     .get('http://localhost:3000/home', { withCredentials: true })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setUser(res.data.firstName);
-  //       setPoints(res.data.points);
-  //       return;
-  //     });
-  // };
-
   useEffect(() => {
     // get request for user and points
     axios
@@ -55,6 +26,17 @@ const Home = (props) => {
         return;
       });
   }, []);
+
+  useEffect(() => {
+    // get request for user and points
+    axios.put('/points', { points: points, }, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [points]);
 
   // ==========================
   // Render this
@@ -71,7 +53,6 @@ const Home = (props) => {
         <Timer
           points={points}
           setPoints={setPoints}
-          addPointsDb={addPointsDb}
         />
         {/* add decorations */}
       </div>
