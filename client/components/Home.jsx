@@ -32,7 +32,7 @@ const Home = (props) => {
 
   const getUserInfo = () => {
     axios
-      .get('http://localhost.3000/home', { withCredentials: true })
+      .get('http://localhost:3000/home', { withCredentials: true })
       .then((res) => {
         setUser(res.data.firstName);
         setPoints(res.data.points);
@@ -56,11 +56,7 @@ const Home = (props) => {
       </div>
       <div className='homeBody'>
         {/* add decorations */}
-        <Timer
-        // points={points}
-        // setPoints={setPoints}
-        // addPointsDb={addPointsDb}
-        />
+        <Timer />
         {/* add decorations */}
       </div>
     </div>
