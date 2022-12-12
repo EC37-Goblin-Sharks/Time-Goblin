@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const bcrypt = require('bcryptjs');
 
 const userController = {};
 
@@ -17,47 +18,64 @@ userController.createUser = (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      next({ log: err, message: 'error in userController.createUser' });
+      next({ log: err, message: { err: 'error in userController.createUser' } });
     });
 };
 
 userController.getUser = (req, res, next) => {
   console.log(`ENTERED USER CONTROLLER getUser`);
-  const { username } = req.body;
-  User.findOne({ username })
+  const { userID } = req.cookies.ssid;
+  User.findOne({ _id: userID })
     .then((data) => {
       res.locals.user = data;
       return next();
     })
     .catch((err) => {
-      next({ log: err, message: 'error in userController.getUser' });
+      return next({ log: err, message: { err: 'error in userController.getUser' } });
     });
 };
 
 userController.verifyUser = (req, res, next) => {
   console.log(`ENTERED VERIFY:  `);
   const { password, username } = req.body;
+
   User.findOne({ username: `${username}` })
     .then((doc) => {
-      if (doc.password === password) {
-        res.locals.user = doc;
-      } else {
-        res.redirect('/signup');
+      // if username doesn't exist, send to sign up
+      if (!doc) {
+        return res.redirect('/signup');
       }
-      return next();
+      // check password
+      bcrypt.compare(password, doc.password)
+        .then((result) => {
+          if (!result) {
+            return res.redirect('/');
+          }
+          else {
+            res.locals.user = doc;
+            return next();
+          }
+        })
+        .catch((err) => {
+          next({ log: err, message: { err: 'error in comparing hash of userController.verifyUser' } });
+        });
     })
     .catch((err) => {
-      next({ log: err, message: 'error in userController.verifyUser' });
+      next({ log: err, message: { err: 'error in userController.verifyUser' } });
     });
 };
 
 userController.updateUser = (req, res, next) => {
-  User.findOne({ username: req.body.user });
+  User.findOne({ username: req.body.user })
+    .then()
+    .catch((err) => {
+      next({ log: err, message: { err: 'error in comparing hash of userController.updateUser' } });
+    });
 };
 
 //====================
 // FOR STRETCH GOALS LATER
 //====================
-userController.deleteUser = (req, res, next) => {};
+userController.deleteUser = (req, res, next) => { };
 
 module.exports = userController;
