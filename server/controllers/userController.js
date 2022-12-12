@@ -13,7 +13,8 @@ userController.createUser = (req, res, next) => {
     points: 0,
   })
     .then((userData) => {
-      res.locals.user = userData;
+      res.locals.newUser = userData;
+      res.redirect('/login');
       return next();
     })
     .catch((err) => {
@@ -21,22 +22,34 @@ userController.createUser = (req, res, next) => {
     });
 };
 
-//===================
-//CHECK DETAIL ON HOW REQ.BODY IS COMING IN
-//====================
-
 userController.getUser = (req, res, next) => {
   console.log(`ENTERED USER CONTROLLER getUser`);
-  const { userName } = req.params;
-  User.findOne({ username: userName })
+  const { username } = req.body;
+  User.findOne({ username })
     .then((data) => {
       res.locals.user = data;
+      return next();
     })
     .catch((err) => {
       next({ log: err, message: 'error in userController.getUser' });
-    })
-    .then(() => {
+    });
+};
+
+userController.verifyUser = (req, res, next) => {
+  console.log(`ENTERED VERIFY:  `);
+  const { password, username } = req.body;
+  User.find({ username: `${username}` })
+    .then((doc) => {
+      if (doc[0].password === password) {
+        res.locals.user = doc;
+      } else {
+        //WHAT IS THE CORRECT URL FOR THIS???????
+        res.redirect('/signup');
+      }
       return next();
+    })
+    .catch((err) => {
+      next({ log: err, message: 'error in userController.verifyUser' });
     });
 };
 
