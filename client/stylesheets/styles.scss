@@ -1,17 +1,31 @@
+/*
+https://colorhunt.co/palette/cff5e7a0e4cb59c1bd0d4c92
+CFF5E7 < top 
+A0E4CB < mid top
+59C1BD < mid bottom
+0D4C92 < bottom
 
+*/
+
+$base-color: #CFF5E7;
+$second-color: #A0E4CB;
+$third-color: #59C1BD;
+$fourth-color: #0D4C92;
+$off-white: #FFF8F0;
 
 /* universal reset of margins and padding */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif; // no impact 
+    font-family: 'ArialRounded', sans-serif; // no impact 
+    background-color: $base-color;
 }
 
 /* absolute header and footer for all pages */
 
 header {
-    background-color: #77BFA3;
+    background-color: $base-color;
     position: fixed;
     top: 0;
     width: 100%;
@@ -21,8 +35,8 @@ header {
     padding: 0px 0px;
     font-size: 24px;
     font-weight: 700;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: #FFF8F0;
+    font-family: 'ArialRounded', sans-serif;
+    color: $off-white;
     z-index: 1;
   }
 
@@ -36,7 +50,7 @@ header {
   /* used to remove underline on redirect link back to home*/
   header a {
     text-decoration: none;
-    // color: #FFF8F0;
+    color: $fourth-color;
   }
 
   footer {
@@ -48,7 +62,168 @@ header {
     justify-content: center;
     padding: 12px 0px;
     font-size: 12px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    background-color: #DDE7C7;
-    color: #635D5C;
+    font-family: 'ArialRounded', sans-serif;
+    background-color: $fourth-color;
+    color: $off-white;
   }
+
+
+  .loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 850px;
+  }
+
+  /* login page */
+
+  .loginBox {
+    background-color: $third-color;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 2em 1.5em 2em;
+    margin-bottom: 10px;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input::placeholder {
+    overflow: visible;
+  }
+
+  .formInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 2px auto;
+    padding: 4px;
+    background-color: $off-white;
+    border: 1px solid;
+    border-radius: 3px;
+  }
+  
+  .loginBtn {
+    margin: 5px auto;
+    padding: auto 3px;
+    width: 100%;
+    color: $off-white;
+    background-color: $fourth-color;
+  }
+
+  .loginBox a {
+    font-size: 1em;
+    margin: .25em;
+    color: $off-white;
+  }
+
+
+
+
+
+
+
+
+
+  /* signup page */
+
+.signupPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: $base-color;
+  height: 850px;
+  margin: auto;
+}
+
+.signupBox {
+  background-color: $third-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 2em 2em 1.5em 2em;
+  font-size: 1em;
+  font-family: 'ArialRounded', sans-serif;
+  opacity: .75;
+}
+
+.signupHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto auto 16px;
+  font-size: 2em;
+}
+
+.signupForm .formInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 2px auto;
+  padding: 2px;
+  background-color: $off-white;
+  border: 1px solid;
+  border-radius: 3px;
+}
+
+.signupBtn {
+  margin: 5px auto;
+  padding: auto 3px;
+  width: 100%;
+  color: $off-white;
+  background-color: $fourth-color;
+}
+
+/* home page */
+
+.homePage {
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.homeHeader {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.homeBody {
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 35%;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.timer {
+  font-size: 120px;
+  font-family: 'Rubik', sans-serif;
+  // margin: 15% auto auto;
+}
+
+.timerBtn {
+  font-size: 32px;
+  color: $off-white;
+  background-color: $fourth-color;
+  padding: .5em 1em;
+  font-family: 'Rubik', sans-serif;
+  border-radius: .5em;
+}
