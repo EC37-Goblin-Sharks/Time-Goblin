@@ -8,6 +8,15 @@ const cookieController = require('../controllers/cookieController');
 const router = express.Router();
 console.log(`ENTERING API ROUTERS`);
 
+
+//==========================
+//Route for getting user info : for frontend
+//==========================
+router.get('/home', userController.getUser, (req, res) => {
+  return res.status(200).json(res.locals.user);
+})
+
+
 //==========================
 //Route for signing up as new user: redirects to login page after
 //==========================
@@ -22,6 +31,7 @@ router.post(
   '/login',
   userController.verifyUser,
   cookieController.setSSIDCookie,
+  sessionController.startSession,
   (req, res) => {
     return res.redirect('/home');
   }
