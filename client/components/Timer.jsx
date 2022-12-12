@@ -5,7 +5,7 @@ const Timer = (props) => {
   const [second, setSecond] = useState('00');
   const [minute, setMinute] = useState('25');
   const [isActive, setIsActive] = useState(false);
-  const [counter, setCounter] = useState(1499); // 25 minutes * 60 seconds - 1 second for the setInterval delay
+  const [counter, setCounter] = useState(1499); // 1499 bc 25 minutes * 60 seconds - 1 second for the setInterval delay
 
   useEffect(() => {
     let intervalId;
@@ -28,10 +28,20 @@ const Timer = (props) => {
         setMinute(computedMinute);
 
         setCounter((counter) => counter - 1);
+        // if (counter % 15 === 0) {
+        //   console.log('points should change');
+        //   props.setPoints((oldPoints) => oldPoints + 1);
+        // }
         if (counter === 0) {
+          // update state to reflect total points
+          console.log('points should change');
+          props.setPoints((oldPoints) => oldPoints + 1);
           // post request to update score
           // props.addPointsDb();
           setIsActive(!isActive);
+          setMinute('25');
+          setSecond('00');
+          setCounter(1499);
         }
       }, 1000);
     }

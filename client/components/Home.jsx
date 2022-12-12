@@ -18,9 +18,13 @@ const Home = (props) => {
   const addPointsDb = () => {
     // setPoints(); // increment points here
     axios
-      .post('/points', {
-        points: points,
-      })
+      .put(
+        '/points',
+        {
+          points: points,
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
         console.log(res);
       })
@@ -64,7 +68,11 @@ const Home = (props) => {
       </div>
       <div className='homeBody'>
         {/* add decorations */}
-        <Timer />
+        <Timer
+          points={points}
+          setPoints={setPoints}
+          addPointsDb={addPointsDb}
+        />
         {/* add decorations */}
       </div>
     </div>
