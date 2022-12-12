@@ -8,7 +8,6 @@ import Home from './components/Home';
 const App = (props) => {
   return (
     <div className="router">
-      time goblin!
       {/* content seen on every page */}
       <div className="routerMain" id='content'>
         <Routes>
