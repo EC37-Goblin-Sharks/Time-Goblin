@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 import Timer from './Timer';
+import TaskList from './Tasklist';
 
 const Home = (props) => {
   // ==========================
@@ -67,6 +68,7 @@ const Home = (props) => {
         <Timer />
         {/* add decorations */}
       </div>
+        <TaskList/>
     </div>
   );
 };
