@@ -80,16 +80,21 @@ userController.verifyUser = (req, res, next) => {
 };
 
 userController.updateUser = (req, res, next) => {
-  User.findOne({ username: req.body.user })
-    .then()
-    .catch((err) => {
-      next({
-        log: err,
-        message: {
-          err: 'error in comparing hash of userController.updateUser',
-        },
-      });
+  const { userID } = req.cookies.ssid;
+  const { points } = req.body.points;
+  console.log(`POINTS from UpdateUser:  `, points);
+  User.updateOne(
+    { _id: userID },
+    { $set: { points: points } },
+    { upsert: false }
+  ).catch((err) => {
+    next({
+      log: err,
+      message: {
+        err: 'error in comparing hash of userController.updateUser',
+      },
     });
+  });
 };
 
 //====================
