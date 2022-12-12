@@ -37,7 +37,7 @@ const Timer = (props) => {
           console.log('points should change');
           props.setPoints((oldPoints) => oldPoints + 1);
           // post request to update score
-          // props.addPointsDb();
+          props.addPointsDb();
           setIsActive(!isActive);
           setMinute('25');
           setSecond('00');
