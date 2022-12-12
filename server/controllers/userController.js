@@ -27,7 +27,7 @@ userController.createUser = (req, res, next) => {
 
 userController.getUser = (req, res, next) => {
   console.log(`ENTERED USER CONTROLLER getUser`);
-  const { userID } = req.cookies.ssid;
+  const userID = req.cookies.ssid;
   User.findOne({ _id: userID })
     .then((data) => {
       res.locals.user = data;

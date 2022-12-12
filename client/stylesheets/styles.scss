@@ -19,7 +19,8 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'ArialRounded', sans-serif; // no impact 
-    background-color: $base-color;
+    // background-color: $base-color;
+    background-image: linear-gradient(to bottom, $base-color, $second-color, $third-color, $fourth-color)
 }
 
 /* absolute header and footer for all pages */
@@ -32,7 +33,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 0px;
+    padding: 5px 0px;
     font-size: 24px;
     font-weight: 700;
     font-family: 'ArialRounded', sans-serif;
@@ -63,7 +64,7 @@ header {
     padding: 12px 0px;
     font-size: 12px;
     font-family: 'ArialRounded', sans-serif;
-    background-color: $fourth-color;
+    // background-color: $fourth-color;
     color: $off-white;
   }
 
@@ -78,7 +79,8 @@ header {
   /* login page */
 
   .loginBox {
-    background-color: $third-color;
+    // background-color: $third-color;
+    background-color: rgba(255, 255, 255, 0.5);
     border-color: black;
     border-width: 1px;
     border-style: solid;
@@ -122,7 +124,8 @@ header {
   .loginBox a {
     font-size: 1em;
     margin: .25em;
-    color: $off-white;
+    // color: $off-white;
+    color: $fourth-color;
   }
 
 
@@ -145,7 +148,8 @@ header {
 }
 
 .signupBox {
-  background-color: $third-color;
+  // background-color: $third-color;
+  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,34 +199,54 @@ header {
 
 
 .homeHeader {
-  margin-top: 25px;
+  // margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  padding: 25px;
+  & div {
+    margin: 2px;
+  }
 }
 
 .homeBody {
   background-color: rgba(255, 255, 255, 0.5);
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 35%;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  min-width: 325px;
   padding: 2em;
   border-radius: 1em;
 }
 
-.timer {
+.time {
   font-size: 120px;
   font-family: 'Rubik', sans-serif;
   // margin: 15% auto auto;
+  // color: $off-white;
+  width: 50px;
 }
 
-.timerBtn {
-  font-size: 32px;
-  color: $off-white;
-  background-color: $fourth-color;
-  padding: .5em 1em;
-  font-family: 'Rubik', sans-serif;
-  border-radius: .5em;
+
+.buttons {
+  display: flex;
+  flex-direction: rows;
+  justify-content: center;
+
+  & button {
+    font-size: 32px;
+    color: $off-white;
+    background-color: $fourth-color;
+    // margin: auto 5px auto;
+    padding: .5em 1em;
+    font-family: 'Rubik', sans-serif;
+    border-radius: .5em;
+  }
+}
+
+button:hover {
+  background-color: #B73E3E;
 }
