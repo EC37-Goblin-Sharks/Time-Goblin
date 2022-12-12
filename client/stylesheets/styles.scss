@@ -208,6 +208,7 @@ header {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  font-size: 2em;
   padding: 25px;
   & div {
     margin: 2px;
@@ -263,16 +264,36 @@ button:hover {
 //   height: 5px;
 // }
 
+
+/* Task List Table */
+
+.taskTable {
+  margin: 1em auto auto;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
 .taskName {
   display : flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  margin: auto auto auto 5px;
 }
 
 tr > div {
   width: 300px;
 }
 
+// .editBtn {
+//   display: flex;
+//   justify-content: center;
+// }
+
 .taskInput {
   width: 300px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 1em;
 }

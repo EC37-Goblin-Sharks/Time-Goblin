@@ -10,7 +10,7 @@ function TaskList (props) {
             return [...oldTasks, task];
         })
         setTask('');
-        console.log(taskList)
+        // console.log(taskList)
     }
 
     function handleInput(event) {
@@ -30,30 +30,33 @@ function TaskList (props) {
 
     return (
         <div> 
-            <section >
-            <table className='taskHeader'> 
-            <tr>
+            <section>
+            <table className='taskTable'> 
+            <tr className='tableHeaders'>
+                <th>#</th>
                 <th>Task</th>
                 <th>Edit</th>
             </tr>
             {taskList.map( (taskItem, index) => {
                 return (
                     <tr>
-                    <div className='taskItem'>
-                        <td 
+                    <td>{index+1}</td>
+                    <td className='taskItem'>
+                        <div 
                             className='taskName'
                             id={index}
                             key={index}
                             >{taskItem}
-                        </td>
-                    </div>
-                        <td><button id={index} onClick={handleDelete}>-</button></td>
+                        </div>
+                    </td>
+                        <td className='editBtn'><button className='deleteBtn' id={index} onClick={handleDelete}>-</button></td>
                     </tr>
                 )
             })}
             <tr>
+                <td></td>
                 <td><input className='taskInput' onChange={handleInput} name='newTask' placeholder='Input Task' value={task}></input></td>
-                <td><button onClick={handleAdd}>+</button></td>
+                <td><button className='addBtn' onClick={handleAdd}>+</button></td>
             </tr>
                 </table>
             </section>

@@ -80,8 +80,11 @@ userController.verifyUser = (req, res, next) => {
 };
 
 userController.updateUser = (req, res, next) => {
-  User.findOne({ username: req.body.user })
-    .then()
+  const userID = req.cookies.ssid;
+  const { points } = req.body;
+  console.log(`POINTS from UpdateUser:  `, points);
+  User.updateOne({ _id: userID }, { points })
+    .then(() => next())
     .catch((err) => {
       next({
         log: err,
@@ -95,6 +98,6 @@ userController.updateUser = (req, res, next) => {
 //====================
 // FOR STRETCH GOALS LATER
 //====================
-userController.deleteUser = (req, res, next) => {};
+userController.deleteUser = (req, res, next) => { };
 
 module.exports = userController;
