@@ -14,7 +14,6 @@ userController.createUser = (req, res, next) => {
   })
     .then((userData) => {
       res.locals.newUser = userData;
-      res.redirect('/login');
       return next();
     })
     .catch((err) => {
@@ -38,12 +37,11 @@ userController.getUser = (req, res, next) => {
 userController.verifyUser = (req, res, next) => {
   console.log(`ENTERED VERIFY:  `);
   const { password, username } = req.body;
-  User.find({ username: `${username}` })
+  User.findOne({ username: `${username}` })
     .then((doc) => {
-      if (doc[0].password === password) {
+      if (doc.password === password) {
         res.locals.user = doc;
       } else {
-        //WHAT IS THE CORRECT URL FOR THIS???????
         res.redirect('/signup');
       }
       return next();

@@ -12,22 +12,18 @@ console.log(`ENTERING API ROUTERS`);
 //Route for signing up as new user: redirects to login page after
 //==========================
 router.post('/signup/request', userController.createUser, (req, res) => {
-  return res.status(200).json(res.locals.newUser);
+  return res.redirect('/login');
 });
 
 //==========================
 //Route for logging in as existing user
 //==========================
-router.get(
-  '/username',
-  userController.getUser,
+router.post(
+  '/login',
   userController.verifyUser,
   cookieController.setSSIDCookie,
   (req, res) => {
-    res
-      .status(200)
-      //IS THIS THE RIGHT PATH?? WHERE DO I SEND WHEN NOT NEW HTML?
-      .sendFile(path.resolve(__dirname, '../client/components/home'));
+    return res.redirect('/home');
   }
 );
 //======================
