@@ -12,7 +12,7 @@ console.log(`ENTERING API ROUTERS`);
 //Route for signing up as new user: redirects to login page after
 //==========================
 router.post('/signup/request', userController.createUser, (req, res) => {
-  return res.redirect('/login');
+  return res.redirect('/');
 });
 
 //==========================
